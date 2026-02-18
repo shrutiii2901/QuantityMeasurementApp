@@ -8,30 +8,31 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.quantitymeasurement</groupId>
-    <artifactId>feet-measurement</artifactId>
+    <artifactId>feet-inches-measurement</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>QuantityMeasurementApp</name>
 
-    <!-- Java Version -->
+    <name>feet-inches-measurement</name>
+
+    <!-- ✅ Java Version -->
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <junit.jupiter.version>5.10.0</junit.jupiter.version>
+        <junit.version>5.10.0</junit.version>
     </properties>
 
+    <!-- ✅ Dependencies -->
     <dependencies>
-
         <!-- JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>${junit.jupiter.version}</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
+    <!-- ✅ Build Plugins -->
     <build>
         <plugins>
 
@@ -50,7 +51,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
+                <version>3.1.2</version>
             </plugin>
 
         </plugins>
