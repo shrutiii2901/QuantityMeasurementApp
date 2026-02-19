@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="QuantityLengthTest" time="0.138" tests="9" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="QuantityLengthTest" time="0.077" tests="14" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\shrut\QuantityMeasurementApp\quantitymeasurementapp\target\test-classes;C:\Users\shrut\QuantityMeasurementApp\quantitymeasurementapp\target\classes;C:\Users\shrut\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.0\junit-jupiter-5.10.0.jar;C:\Users\shrut\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.0\junit-jupiter-api-5.10.0.jar;C:\Users\shrut\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\shrut\.m2\repository\org\junit\platform\junit-platform-commons\1.10.0\junit-platform-commons-1.10.0.jar;C:\Users\shrut\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\shrut\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.0\junit-jupiter-params-5.10.0.jar;C:\Users\shrut\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.0\junit-jupiter-engine-5.10.0.jar;C:\Users\shrut\.m2\repository\org\junit\platform\junit-platform-engine\1.10.0\junit-platform-engine-1.10.0.jar;"/>
+    <property name="java.class.path" value="C:\Users\shrut\QuantityMeasurementApp\quantitymeasurementapp\target\test-classes;C:\Users\shrut\QuantityMeasurementApp\quantitymeasurementapp\target\classes;C:\Users\shrut\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.0\junit-jupiter-api-5.10.0.jar;C:\Users\shrut\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\shrut\.m2\repository\org\junit\platform\junit-platform-commons\1.10.0\junit-platform-commons-1.10.0.jar;C:\Users\shrut\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\shrut\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.0\junit-jupiter-engine-5.10.0.jar;C:\Users\shrut\.m2\repository\org\junit\platform\junit-platform-engine\1.10.0\junit-platform-engine-1.10.0.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-25\bin"/>
-    <property name="sun.java.command" value="C:\Users\shrut\AppData\Local\Temp\surefire16442492210539619505\surefirebooter-20260219203330102_3.jar C:\Users\shrut\AppData\Local\Temp\surefire16442492210539619505 2026-02-19T20-33-29_918-jvmRun1 surefire-20260219203330102_1tmp surefire_0-20260219203330102_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\shrut\AppData\Local\Temp\surefire372030248433504641\surefirebooter-20260219213329421_3.jar C:\Users\shrut\AppData\Local\Temp\surefire372030248433504641 2026-02-19T21-33-29_313-jvmRun1 surefire-20260219213329421_1tmp surefire_0-20260219213329421_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\shrut\QuantityMeasurementApp\quantitymeasurementapp\target\test-classes;C:\Users\shrut\QuantityMeasurementApp\quantitymeasurementapp\target\classes;C:\Users\shrut\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.0\junit-jupiter-5.10.0.jar;C:\Users\shrut\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.0\junit-jupiter-api-5.10.0.jar;C:\Users\shrut\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\shrut\.m2\repository\org\junit\platform\junit-platform-commons\1.10.0\junit-platform-commons-1.10.0.jar;C:\Users\shrut\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\shrut\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.0\junit-jupiter-params-5.10.0.jar;C:\Users\shrut\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.0\junit-jupiter-engine-5.10.0.jar;C:\Users\shrut\.m2\repository\org\junit\platform\junit-platform-engine\1.10.0\junit-platform-engine-1.10.0.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\shrut\QuantityMeasurementApp\quantitymeasurementapp\target\test-classes;C:\Users\shrut\QuantityMeasurementApp\quantitymeasurementapp\target\classes;C:\Users\shrut\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.0\junit-jupiter-api-5.10.0.jar;C:\Users\shrut\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\shrut\.m2\repository\org\junit\platform\junit-platform-commons\1.10.0\junit-platform-commons-1.10.0.jar;C:\Users\shrut\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\shrut\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.0\junit-jupiter-engine-5.10.0.jar;C:\Users\shrut\.m2\repository\org\junit\platform\junit-platform-engine\1.10.0\junit-platform-engine-1.10.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\shrut"/>
     <property name="user.language" value="en"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\shrut\AppData\Local\Temp\surefire16442492210539619505\surefirebooter-20260219203330102_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\shrut\AppData\Local\Temp\surefire372030248433504641\surefirebooter-20260219213329421_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="25.0.1+8-LTS-27"/>
@@ -59,13 +59,18 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="testInvalidUnit" classname="QuantityLengthTest" time="0.051"/>
-  <testcase name="testEquality_InchToInch_SameValue" classname="QuantityLengthTest" time="0.005"/>
-  <testcase name="testEquality_FeetToFeet_DifferentValue" classname="QuantityLengthTest" time="0.007"/>
-  <testcase name="testEquality_InchToFeet_EquivalentValue" classname="QuantityLengthTest" time="0.003"/>
-  <testcase name="testEquality_FeetToFeet_SameValue" classname="QuantityLengthTest" time="0.001"/>
-  <testcase name="testEquality_SameReference" classname="QuantityLengthTest" time="0.003"/>
-  <testcase name="testEquality_NullComparison" classname="QuantityLengthTest" time="0.005"/>
-  <testcase name="testEquality_FeetToInch_EquivalentValue" classname="QuantityLengthTest" time="0.003"/>
-  <testcase name="testEquality_InchToInch_DifferentValue" classname="QuantityLengthTest" time="0.002"/>
+  <testcase name="testEquality_YardToFeet_NonEquivalentValue" classname="QuantityLengthTest" time="0.03"/>
+  <testcase name="testEquality_CentimetersToInches_EquivalentValue" classname="QuantityLengthTest" time="0.002"/>
+  <testcase name="testEquality_FeetToYard_EquivalentValue" classname="QuantityLengthTest" time="0.001"/>
+  <testcase name="testEquality_AllUnits_ComplexScenario" classname="QuantityLengthTest" time="0.001"/>
+  <testcase name="testEquality_YardWithNullUnit" classname="QuantityLengthTest" time="0.002"/>
+  <testcase name="testEquality_YardToInches_EquivalentValue" classname="QuantityLengthTest" time="0.001"/>
+  <testcase name="testEquality_YardToFeet_EquivalentValue" classname="QuantityLengthTest" time="0.001"/>
+  <testcase name="testEquality_CentimetersToFeet_NonEquivalentValue" classname="QuantityLengthTest" time="0.001"/>
+  <testcase name="testEquality_InchesToYard_EquivalentValue" classname="QuantityLengthTest" time="0.001"/>
+  <testcase name="testEquality_YardSameReference" classname="QuantityLengthTest" time="0.001"/>
+  <testcase name="testEquality_YardToYard_SameValue" classname="QuantityLengthTest" time="0.001"/>
+  <testcase name="testEquality_YardToYard_DifferentValue" classname="QuantityLengthTest" time="0.001"/>
+  <testcase name="testEquality_MultiUnit_TransitiveProperty" classname="QuantityLengthTest" time="0.0"/>
+  <testcase name="testEquality_YardNullComparison" classname="QuantityLengthTest" time="0.001"/>
 </testsuite>
