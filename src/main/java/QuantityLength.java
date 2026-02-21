@@ -1,10 +1,9 @@
-package com.quantity;
 public class QuantityLength {
 
     private final double value;
     private final LengthUnit unit;
 
-    // Epsilon for floating-point comparison
+  
     private static final double EPSILON = 1e-6;
 
     public QuantityLength(double value, LengthUnit unit) {

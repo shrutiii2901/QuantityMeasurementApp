@@ -1,5 +1,3 @@
-package com.quantity;
-
 public class QuantityMeasurementApp {
 
     public static void demonstrateLengthConversion(double value, LengthUnit fromUnit, LengthUnit toUnit) {
@@ -27,7 +25,7 @@ public class QuantityMeasurementApp {
         demonstrateLengthConversion(0.0, LengthUnit.FEET, LengthUnit.INCHES);
         demonstrateLengthConversion(-1.0, LengthUnit.FEET, LengthUnit.INCHES);
 
-        // Equality checks
+
         QuantityLength len1 = new QuantityLength(1.0, LengthUnit.YARDS);
         QuantityLength len2 = new QuantityLength(3.0, LengthUnit.FEET);
         demonstrateLengthEquality(len1, len2);
