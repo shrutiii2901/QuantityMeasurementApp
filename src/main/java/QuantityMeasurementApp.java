@@ -2,34 +2,43 @@ public class QuantityMeasurementApp {
 
     public static void main(String[] args) {
 
-        QuantityLength q1 = new QuantityLength(1.0, LengthUnit.FEET);
-        QuantityLength q2 = new QuantityLength(12.0, LengthUnit.INCHES);
+       
+        // Weight Equality
+        
 
-        System.out.println(q1.convertTo(LengthUnit.INCHES));
+        QuantityWeight w1 = new QuantityWeight(1.0, WeightUnit.KILOGRAM);
+        QuantityWeight w2 = new QuantityWeight(1000.0, WeightUnit.GRAM);
 
-        System.out.println(q1.add(q2, LengthUnit.FEET));
+        System.out.println(w1.equals(w2));
 
-        QuantityLength q3 = new QuantityLength(36.0, LengthUnit.INCHES);
-        QuantityLength q4 = new QuantityLength(1.0, LengthUnit.YARDS);
+        QuantityWeight w3 = new QuantityWeight(2.20462, WeightUnit.POUND);
 
-        System.out.println(q3.equals(q4));
-
-        QuantityLength q5 = new QuantityLength(1.0, LengthUnit.YARDS);
-        QuantityLength q6 = new QuantityLength(3.0, LengthUnit.FEET);
-
-        System.out.println(q5.add(q6, LengthUnit.YARDS));
-
-        QuantityLength q7 = new QuantityLength(2.54, LengthUnit.CENTIMETERS);
-
-        System.out.println(q7.convertTo(LengthUnit.INCHES));
-
-        QuantityLength q8 = new QuantityLength(5.0, LengthUnit.FEET);
-        QuantityLength q9 = new QuantityLength(0.0, LengthUnit.INCHES);
-
-        System.out.println(q8.add(q9, LengthUnit.FEET));
+        System.out.println(w1.equals(w3));
 
         
-        System.out.println(LengthUnit.FEET.convertToBaseUnit(12.0));
-        System.out.println(LengthUnit.INCHES.convertToBaseUnit(12.0));
+        // Conversion
+        
+
+        System.out.println(w1.convertTo(WeightUnit.GRAM));
+
+        QuantityWeight w4 = new QuantityWeight(2.0, WeightUnit.POUND);
+
+        System.out.println(w4.convertTo(WeightUnit.KILOGRAM));
+
+        
+        // Addition
+        
+
+        QuantityWeight w5 = new QuantityWeight(1.0, WeightUnit.KILOGRAM);
+        QuantityWeight w6 = new QuantityWeight(1000.0, WeightUnit.GRAM);
+
+        System.out.println(w5.add(w6));
+
+        System.out.println(w5.add(w6, WeightUnit.GRAM));
+
+        QuantityWeight w7 = new QuantityWeight(1.0, WeightUnit.POUND);
+        QuantityWeight w8 = new QuantityWeight(453.592, WeightUnit.GRAM);
+
+        System.out.println(w7.add(w8, WeightUnit.POUND));
     }
 }
