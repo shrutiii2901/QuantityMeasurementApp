@@ -1,9 +1,8 @@
 public enum LengthUnit implements IMeasurable {
 
-    FEET(1.0),
-    INCHES(1.0 / 12.0),
-    YARDS(3.0),
-    CENTIMETERS(1.0 / 30.48);
+    FOOT(1.0),
+    INCH(1.0 / 12.0),
+    YARD(3.0);
 
     private final double conversionFactor;
 
