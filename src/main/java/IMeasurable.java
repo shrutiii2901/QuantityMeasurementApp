@@ -1,6 +1,6 @@
 public interface IMeasurable {
 
-    double toBase(double value);
+    double convertToBaseUnit(double value);
 
-    double fromBase(double baseValue);
+    double convertFromBaseUnit(double baseValue);
 }

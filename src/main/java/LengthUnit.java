@@ -1,21 +1,23 @@
 public enum LengthUnit implements IMeasurable {
 
-    FEET(12),
-    INCHES(1);
+    FEET(1.0),
+    INCHES(1.0 / 12),
+    YARDS(3.0),
+    CENTIMETERS(0.0328084);
 
-    private final double conversionFactor;
+    private final double toBaseFactor;
 
-    LengthUnit(double conversionFactor) {
-        this.conversionFactor = conversionFactor;
+    LengthUnit(double toBaseFactor) {
+        this.toBaseFactor = toBaseFactor;
     }
 
     @Override
-    public double toBase(double value) {
-        return value * conversionFactor;
+    public double convertToBaseUnit(double value) {
+        return value * toBaseFactor;
     }
 
     @Override
-    public double fromBase(double baseValue) {
-        return baseValue / conversionFactor;
+    public double convertFromBaseUnit(double baseValue) {
+        return baseValue / toBaseFactor;
     }
 }

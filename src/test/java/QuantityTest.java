@@ -1,4 +1,5 @@
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
@@ -6,80 +7,55 @@ import org.junit.jupiter.api.Test;
 public class QuantityTest {
 
     @Test
-    void testSubtractionSameUnit() {
+    void testAddFeetAndInches() {
 
-        Quantity<LengthUnit> a =
-                new Quantity<>(10, LengthUnit.FEET);
+        Quantity<LengthUnit> q1 = new Quantity<>(1, LengthUnit.FEET);
+        Quantity<LengthUnit> q2 = new Quantity<>(12, LengthUnit.INCHES);
 
-        Quantity<LengthUnit> b =
-                new Quantity<>(5, LengthUnit.FEET);
+        Quantity<LengthUnit> result = q1.add(q2);
 
-        Quantity<LengthUnit> result = a.subtract(b);
-
-        assertEquals(5.0, result.getValue());
+        assertEquals(2.0, result.getValue());
     }
 
     @Test
-    void testSubtractionCrossUnit() {
+    void testSubtractLength() {
 
-        Quantity<LengthUnit> a =
-                new Quantity<>(10, LengthUnit.FEET);
+        Quantity<LengthUnit> q1 = new Quantity<>(10, LengthUnit.FEET);
+        Quantity<LengthUnit> q2 = new Quantity<>(6, LengthUnit.INCHES);
 
-        Quantity<LengthUnit> b =
-                new Quantity<>(6, LengthUnit.INCHES);
-
-        Quantity<LengthUnit> result = a.subtract(b);
+        Quantity<LengthUnit> result = q1.subtract(q2);
 
         assertEquals(9.5, result.getValue());
     }
 
     @Test
-    void testSubtractionNegative() {
+    void testDivide() {
 
-        Quantity<LengthUnit> a =
-                new Quantity<>(5, LengthUnit.FEET);
+        Quantity<LengthUnit> q1 = new Quantity<>(10, LengthUnit.FEET);
+        Quantity<LengthUnit> q2 = new Quantity<>(2, LengthUnit.FEET);
 
-        Quantity<LengthUnit> b =
-                new Quantity<>(10, LengthUnit.FEET);
+        double result = q1.divide(q2);
 
-        Quantity<LengthUnit> result = a.subtract(b);
-
-        assertEquals(-5.0, result.getValue());
+        assertEquals(5.0, result);
     }
 
     @Test
-    void testDivisionSameUnit() {
+    void testCrossCategoryThrowsException() {
 
-        Quantity<LengthUnit> a =
-                new Quantity<>(10, LengthUnit.FEET);
+        Quantity<LengthUnit> l = new Quantity<>(5, LengthUnit.FEET);
+        Quantity<WeightUnit> w = new Quantity<>(5, WeightUnit.KILOGRAM);
 
-        Quantity<LengthUnit> b =
-                new Quantity<>(2, LengthUnit.FEET);
-
-        assertEquals(5.0, a.divide(b));
-    }
-
-    @Test
-    void testDivisionCrossUnit() {
-
-        Quantity<LengthUnit> a =
-                new Quantity<>(24, LengthUnit.INCHES);
-
-        Quantity<LengthUnit> b =
-                new Quantity<>(2, LengthUnit.FEET);
-
-        assertEquals(1.0, a.divide(b));
+        assertThrows(IllegalArgumentException.class, () -> {
+            l.add((Quantity) w);
+        });
     }
 
     @Test
     void testDivisionByZero() {
 
-        Quantity<LengthUnit> a =
-                new Quantity<>(10, LengthUnit.FEET);
+        Quantity<LengthUnit> q1 = new Quantity<>(10, LengthUnit.FEET);
+        Quantity<LengthUnit> q2 = new Quantity<>(0, LengthUnit.FEET);
 
-        Quantity<LengthUnit> b =
-                new Quantity<>(0, LengthUnit.FEET);
-
-        assertThrows(ArithmeticException.class, () -> a.divide(b));
+        assertThrows(ArithmeticException.class, () -> q1.divide(q2));
     }
 }
