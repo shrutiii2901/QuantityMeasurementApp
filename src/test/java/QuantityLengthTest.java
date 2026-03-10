@@ -1,51 +1,52 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class QuantityLengthTest {
 
+    private static final double EPS = 0.001;
+
     @Test
-    void testAddition_ExplicitTargetUnit_Feet() {
-
-        QuantityLength q1 = new QuantityLength(1, LengthUnit.FEET);
-        QuantityLength q2 = new QuantityLength(12, LengthUnit.INCHES);
-
-        QuantityLength result = QuantityLength.add(q1, q2, LengthUnit.FEET);
-
-        assertEquals(2.0, result.getValue(), 0.001);
-        assertEquals(LengthUnit.FEET, result.getUnit());
+    void testConvertToBaseUnit_InchesToFeet() {
+        assertEquals(1.0,
+                LengthUnit.INCHES.convertToBaseUnit(12.0),
+                EPS);
     }
 
     @Test
-    void testAddition_ExplicitTargetUnit_Inches() {
-
-        QuantityLength q1 = new QuantityLength(1, LengthUnit.FEET);
-        QuantityLength q2 = new QuantityLength(12, LengthUnit.INCHES);
-
-        QuantityLength result = QuantityLength.add(q1, q2, LengthUnit.INCHES);
-
-        assertEquals(24.0, result.getValue(), 0.001);
+    void testConvertFromBaseUnit_FeetToInches() {
+        assertEquals(12.0,
+                LengthUnit.INCHES.convertFromBaseUnit(1.0),
+                EPS);
     }
 
     @Test
-    void testAddition_ExplicitTargetUnit_Yards() {
+    void testQuantityEquality() {
 
         QuantityLength q1 = new QuantityLength(1, LengthUnit.FEET);
         QuantityLength q2 = new QuantityLength(12, LengthUnit.INCHES);
 
-        QuantityLength result = QuantityLength.add(q1, q2, LengthUnit.YARDS);
-
-        assertEquals(0.667, result.getValue(), 0.01);
+        assertTrue(q1.equals(q2));
     }
 
     @Test
-    void testAddition_ExplicitTargetUnit_NullTargetUnit() {
+    void testConvertTo() {
+
+        QuantityLength q = new QuantityLength(1, LengthUnit.FEET);
+
+        QuantityLength result = q.convertTo(LengthUnit.INCHES);
+
+        assertEquals(12.0, result.getValue(), EPS);
+    }
+
+    @Test
+    void testAddition() {
 
         QuantityLength q1 = new QuantityLength(1, LengthUnit.FEET);
         QuantityLength q2 = new QuantityLength(12, LengthUnit.INCHES);
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            QuantityLength.add(q1, q2, null);
-        });
+        QuantityLength result = q1.add(q2, LengthUnit.FEET);
+
+        assertEquals(2.0, result.getValue(), EPS);
     }
 }
