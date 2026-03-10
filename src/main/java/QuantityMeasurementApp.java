@@ -1,25 +1,28 @@
+
 public class QuantityMeasurementApp {
 
     public static void main(String[] args) {
 
-        Quantity<LengthUnit> q1 = new Quantity<>(1.0, LengthUnit.FEET);
-        Quantity<LengthUnit> q2 = new Quantity<>(12.0, LengthUnit.INCHES);
+        Quantity<TemperatureUnit> t1 =
+                new Quantity<>(0.0, TemperatureUnit.CELSIUS);
 
-        System.out.println("Addition: " + q1.add(q2));
+        Quantity<TemperatureUnit> t2 =
+                new Quantity<>(32.0, TemperatureUnit.FAHRENHEIT);
 
-        Quantity<WeightUnit> w1 = new Quantity<>(10.0, WeightUnit.KILOGRAM);
-        Quantity<WeightUnit> w2 = new Quantity<>(5000.0, WeightUnit.GRAM);
+        System.out.println("Equality: " + t1.equals(t2));
 
-        System.out.println("Weight Add: " + w1.add(w2, WeightUnit.GRAM));
+        Quantity<TemperatureUnit> converted =
+                t1.convertTo(TemperatureUnit.FAHRENHEIT);
 
-        Quantity<VolumeUnit> v1 = new Quantity<>(5.0, VolumeUnit.LITRE);
-        Quantity<VolumeUnit> v2 = new Quantity<>(2.0, VolumeUnit.LITRE);
+        System.out.println("Converted: " + converted);
 
-        System.out.println("Subtract: " + v1.subtract(v2));
+        try {
 
-        Quantity<LengthUnit> d1 = new Quantity<>(10.0, LengthUnit.FEET);
-        Quantity<LengthUnit> d2 = new Quantity<>(2.0, LengthUnit.FEET);
+            t1.add(new Quantity<>(50, TemperatureUnit.CELSIUS));
 
-        System.out.println("Divide: " + d1.divide(d2));
+        } catch (Exception e) {
+
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }
