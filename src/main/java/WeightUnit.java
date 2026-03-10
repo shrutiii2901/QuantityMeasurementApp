@@ -1,8 +1,7 @@
 public enum WeightUnit implements IMeasurable {
 
-    KILOGRAM(1.0),
-    GRAM(0.001),
-    TONNE(1000.0);
+    KILOGRAM(1000),
+    GRAM(1);
 
     private final double conversionFactor;
 
@@ -10,27 +9,13 @@ public enum WeightUnit implements IMeasurable {
         this.conversionFactor = conversionFactor;
     }
 
-    WeightUnit(double conversionFactor, String name) {
-        this.conversionFactor = conversionFactor;
-    }
-
     @Override
-    public double getConversionFactor() {
-        return conversionFactor;
-    }
-
-    @Override
-    public double convertToBaseUnit(double value) {
+    public double toBase(double value) {
         return value * conversionFactor;
     }
 
     @Override
-    public double convertFromBaseUnit(double baseValue) {
+    public double fromBase(double baseValue) {
         return baseValue / conversionFactor;
-    }
-
-    @Override
-    public String getUnitName() {
-        return name();
     }
 }

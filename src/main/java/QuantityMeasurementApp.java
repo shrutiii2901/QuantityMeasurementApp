@@ -1,25 +1,59 @@
+
 public class QuantityMeasurementApp {
-
-    public static <U extends IMeasurable> void demonstrateEquality(Quantity<U> q1, Quantity<U> q2) {
-        System.out.println(q1 + " equals " + q2 + " : " + q1.equals(q2));
-    }
-
-    public static <U extends IMeasurable> void demonstrateConversion(Quantity<U> q, U target) {
-        System.out.println(q + " -> " + q.convertTo(target));
-    }
-
-    public static <U extends IMeasurable> void demonstrateAddition(Quantity<U> q1, Quantity<U> q2, U target) {
-        System.out.println(q1 + " + " + q2 + " = " + q1.add(q2, target));
-    }
 
     public static void main(String[] args) {
 
-        Quantity<VolumeUnit> v1 = new Quantity<>(1.0, VolumeUnit.LITRE);
-        Quantity<VolumeUnit> v2 = new Quantity<>(1000.0, VolumeUnit.MILLILITRE);
-        Quantity<VolumeUnit> v3 = new Quantity<>(1.0, VolumeUnit.GALLON);
+        demonstrateSubtraction();
+        demonstrateDivision();
+    }
 
-        demonstrateEquality(v1, v2);
-        demonstrateConversion(v3, VolumeUnit.LITRE);
-        demonstrateAddition(v1, v3, VolumeUnit.MILLILITRE);
+    private static void demonstrateSubtraction() {
+
+        System.out.println("---- SUBTRACTION ----");
+
+        Quantity<LengthUnit> a =
+                new Quantity<>(10, LengthUnit.FEET);
+
+        Quantity<LengthUnit> b =
+                new Quantity<>(6, LengthUnit.INCHES);
+
+        System.out.println(a.subtract(b));
+
+        Quantity<WeightUnit> w1 =
+                new Quantity<>(10, WeightUnit.KILOGRAM);
+
+        Quantity<WeightUnit> w2 =
+                new Quantity<>(5000, WeightUnit.GRAM);
+
+        System.out.println(w1.subtract(w2));
+
+        Quantity<VolumeUnit> v1 =
+                new Quantity<>(5, VolumeUnit.LITRE);
+
+        Quantity<VolumeUnit> v2 =
+                new Quantity<>(500, VolumeUnit.MILLILITRE);
+
+        System.out.println(v1.subtract(v2));
+    }
+
+    private static void demonstrateDivision() {
+
+        System.out.println("---- DIVISION ----");
+
+        Quantity<LengthUnit> a =
+                new Quantity<>(10, LengthUnit.FEET);
+
+        Quantity<LengthUnit> b =
+                new Quantity<>(2, LengthUnit.FEET);
+
+        System.out.println(a.divide(b));
+
+        Quantity<VolumeUnit> v1 =
+                new Quantity<>(5, VolumeUnit.LITRE);
+
+        Quantity<VolumeUnit> v2 =
+                new Quantity<>(10, VolumeUnit.LITRE);
+
+        System.out.println(v1.divide(v2));
     }
 }

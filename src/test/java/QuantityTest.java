@@ -1,194 +1,85 @@
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class QuantityTest {
 
-    private static final double EPS = 0.001;
-
-    // -----------------------------
-    // Length Equality Tests
-    // -----------------------------
-
     @Test
-    void testLengthEquality_FeetToInches() {
+    void testSubtractionSameUnit() {
 
-        Quantity<LengthUnit> q1 =
-                new Quantity<>(1.0, LengthUnit.FEET);
+        Quantity<LengthUnit> a =
+                new Quantity<>(10, LengthUnit.FEET);
 
-        Quantity<LengthUnit> q2 =
-                new Quantity<>(12.0, LengthUnit.INCHES);
+        Quantity<LengthUnit> b =
+                new Quantity<>(5, LengthUnit.FEET);
 
-        assertTrue(q1.equals(q2));
+        Quantity<LengthUnit> result = a.subtract(b);
+
+        assertEquals(5.0, result.getValue());
     }
 
     @Test
-    void testLengthEquality_SameUnit() {
+    void testSubtractionCrossUnit() {
 
-        Quantity<LengthUnit> q1 =
-                new Quantity<>(2.0, LengthUnit.FEET);
+        Quantity<LengthUnit> a =
+                new Quantity<>(10, LengthUnit.FEET);
 
-        Quantity<LengthUnit> q2 =
-                new Quantity<>(2.0, LengthUnit.FEET);
+        Quantity<LengthUnit> b =
+                new Quantity<>(6, LengthUnit.INCHES);
 
-        assertTrue(q1.equals(q2));
-    }
+        Quantity<LengthUnit> result = a.subtract(b);
 
-    // -----------------------------
-    // Weight Equality Tests
-    // -----------------------------
-
-    @Test
-    void testWeightEquality_KgToGram() {
-
-        Quantity<WeightUnit> w1 =
-                new Quantity<>(1.0, WeightUnit.KILOGRAM);
-
-        Quantity<WeightUnit> w2 =
-                new Quantity<>(1000.0, WeightUnit.GRAM);
-
-        assertTrue(w1.equals(w2));
+        assertEquals(9.5, result.getValue());
     }
 
     @Test
-    void testWeightEquality_KgToPound() {
+    void testSubtractionNegative() {
 
-        Quantity<WeightUnit> w1 =
-                new Quantity<>(1.0, WeightUnit.KILOGRAM);
+        Quantity<LengthUnit> a =
+                new Quantity<>(5, LengthUnit.FEET);
 
-        Quantity<WeightUnit> w2 =
-                new Quantity<>(2.20462, WeightUnit.POUND);
+        Quantity<LengthUnit> b =
+                new Quantity<>(10, LengthUnit.FEET);
 
-        assertTrue(w1.equals(w2));
-    }
+        Quantity<LengthUnit> result = a.subtract(b);
 
-    // -----------------------------
-    // Length Conversion Tests
-    // -----------------------------
-
-    @Test
-    void testLengthConversion_FeetToInches() {
-
-        Quantity<LengthUnit> q =
-                new Quantity<>(1.0, LengthUnit.FEET);
-
-        Quantity<LengthUnit> result =
-                q.convertTo(LengthUnit.INCHES);
-
-        assertEquals(12.0, result.getValue(), EPS);
+        assertEquals(-5.0, result.getValue());
     }
 
     @Test
-    void testLengthConversion_InchesToFeet() {
+    void testDivisionSameUnit() {
 
-        Quantity<LengthUnit> q =
-                new Quantity<>(24.0, LengthUnit.INCHES);
+        Quantity<LengthUnit> a =
+                new Quantity<>(10, LengthUnit.FEET);
 
-        Quantity<LengthUnit> result =
-                q.convertTo(LengthUnit.FEET);
+        Quantity<LengthUnit> b =
+                new Quantity<>(2, LengthUnit.FEET);
 
-        assertEquals(2.0, result.getValue(), EPS);
-    }
-
-    // -----------------------------
-    // Weight Conversion Tests
-    // -----------------------------
-
-    @Test
-    void testWeightConversion_KgToGram() {
-
-        Quantity<WeightUnit> q =
-                new Quantity<>(1.0, WeightUnit.KILOGRAM);
-
-        Quantity<WeightUnit> result =
-                q.convertTo(WeightUnit.GRAM);
-
-        assertEquals(1000.0, result.getValue(), EPS);
+        assertEquals(5.0, a.divide(b));
     }
 
     @Test
-    void testWeightConversion_PoundToKg() {
+    void testDivisionCrossUnit() {
 
-        Quantity<WeightUnit> q =
-                new Quantity<>(2.20462, WeightUnit.POUND);
+        Quantity<LengthUnit> a =
+                new Quantity<>(24, LengthUnit.INCHES);
 
-        Quantity<WeightUnit> result =
-                q.convertTo(WeightUnit.KILOGRAM);
+        Quantity<LengthUnit> b =
+                new Quantity<>(2, LengthUnit.FEET);
 
-        assertEquals(1.0, result.getValue(), EPS);
-    }
-
-    // -----------------------------
-    // Length Addition Tests
-    // -----------------------------
-
-    @Test
-    void testLengthAddition_FeetPlusInches() {
-
-        Quantity<LengthUnit> q1 =
-                new Quantity<>(1.0, LengthUnit.FEET);
-
-        Quantity<LengthUnit> q2 =
-                new Quantity<>(12.0, LengthUnit.INCHES);
-
-        Quantity<LengthUnit> result =
-                q1.add(q2, LengthUnit.FEET);
-
-        assertEquals(2.0, result.getValue(), EPS);
-    }
-
-    // -----------------------------
-    // Weight Addition Tests
-    // -----------------------------
-
-    @Test
-    void testWeightAddition_KgPlusGram() {
-
-        Quantity<WeightUnit> w1 =
-                new Quantity<>(1.0, WeightUnit.KILOGRAM);
-
-        Quantity<WeightUnit> w2 =
-                new Quantity<>(1000.0, WeightUnit.GRAM);
-
-        Quantity<WeightUnit> result =
-                w1.add(w2, WeightUnit.KILOGRAM);
-
-        assertEquals(2.0, result.getValue(), EPS);
-    }
-
-    // -----------------------------
-    // Cross Category Comparison
-    // -----------------------------
-
-    @Test
-    void testCrossCategoryComparison() {
-
-        Quantity<LengthUnit> length =
-                new Quantity<>(1.0, LengthUnit.FEET);
-
-        Quantity<WeightUnit> weight =
-                new Quantity<>(1.0, WeightUnit.KILOGRAM);
-
-        assertFalse(length.equals(weight));
-    }
-
-    // -----------------------------
-    // Constructor Validation
-    // -----------------------------
-
-    @Test
-    void testConstructor_NullUnit() {
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Quantity<>(1.0, null);
-        });
+        assertEquals(1.0, a.divide(b));
     }
 
     @Test
-    void testConstructor_InvalidValue() {
+    void testDivisionByZero() {
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Quantity<>(Double.NaN, LengthUnit.FEET);
-        });
+        Quantity<LengthUnit> a =
+                new Quantity<>(10, LengthUnit.FEET);
+
+        Quantity<LengthUnit> b =
+                new Quantity<>(0, LengthUnit.FEET);
+
+        assertThrows(ArithmeticException.class, () -> a.divide(b));
     }
-
 }

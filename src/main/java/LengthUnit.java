@@ -1,8 +1,7 @@
 public enum LengthUnit implements IMeasurable {
 
-    FOOT(1.0),
-    INCH(1.0 / 12.0),
-    YARD(3.0);
+    FEET(12),
+    INCHES(1);
 
     private final double conversionFactor;
 
@@ -11,22 +10,12 @@ public enum LengthUnit implements IMeasurable {
     }
 
     @Override
-    public double getConversionFactor() {
-        return conversionFactor;
-    }
-
-    @Override
-    public double convertToBaseUnit(double value) {
+    public double toBase(double value) {
         return value * conversionFactor;
     }
 
     @Override
-    public double convertFromBaseUnit(double baseValue) {
+    public double fromBase(double baseValue) {
         return baseValue / conversionFactor;
-    }
-
-    @Override
-    public String getUnitName() {
-        return name();
     }
 }
