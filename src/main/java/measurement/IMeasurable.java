@@ -5,6 +5,6 @@ public interface IMeasurable {
     double convertFromBaseUnit(double baseValue);
 
     default void validateOperationSupport(String operation) {
-        // default allowed
+        
     }
 }
