@@ -24,8 +24,6 @@ public class Quantity<U extends IMeasurable> {
     }
 
   
-
-    
     public Quantity<U> convertTo(U targetUnit) {
 
         if (targetUnit == null) {
@@ -47,8 +45,6 @@ public class Quantity<U extends IMeasurable> {
     }
 
     
-    
-    
     public Quantity<U> add(Quantity<U> other, U targetUnit) {
 
         if (other == null || targetUnit == null) {
@@ -65,8 +61,7 @@ public class Quantity<U extends IMeasurable> {
         return new Quantity<>(round(result), targetUnit);
     }
 
-   
-   
+
    
     @Override
     public boolean equals(Object obj) {
