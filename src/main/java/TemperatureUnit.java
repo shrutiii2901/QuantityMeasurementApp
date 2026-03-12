@@ -20,7 +20,7 @@ public enum TemperatureUnit implements IMeasurable {
     private final Function<Double, Double> toCelsius;
     private final Function<Double, Double> fromCelsius;
 
-    // Temperature does NOT support arithmetic
+    
     private final SupportsArithmetic supportsArithmetic = () -> false;
 
     TemperatureUnit(Function<Double, Double> toCelsius,

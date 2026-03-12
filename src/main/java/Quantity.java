@@ -25,9 +25,7 @@ public class Quantity<U extends Enum<U> & IMeasurable> {
         return unit;
     }
 
-    // =====================
-    // Conversion
-    // =====================
+   
 
     public Quantity<U> convertTo(U targetUnit) {
 
@@ -41,9 +39,6 @@ public class Quantity<U extends Enum<U> & IMeasurable> {
         return new Quantity<>(round(converted), targetUnit);
     }
 
-    // =====================
-    // Equality
-    // =====================
 
     @Override
     public boolean equals(Object obj) {
@@ -62,9 +57,7 @@ public class Quantity<U extends Enum<U> & IMeasurable> {
         return Math.abs(base1 - base2) < EPSILON;
     }
 
-    // =====================
-    // Arithmetic Enum
-    // =====================
+
 
     private enum ArithmeticOperation {
 
@@ -87,10 +80,6 @@ public class Quantity<U extends Enum<U> & IMeasurable> {
         }
     }
 
-    // =====================
-    // Helper Methods
-    // =====================
-
     private double performArithmetic(Quantity<U> other,
                                      ArithmeticOperation operation) {
 
@@ -106,9 +95,7 @@ public class Quantity<U extends Enum<U> & IMeasurable> {
         return Math.round(v * 100.0) / 100.0;
     }
 
-    // =====================
-    // Add
-    // =====================
+   
 
     public Quantity<U> add(Quantity<U> other) {
 
@@ -119,9 +106,6 @@ public class Quantity<U extends Enum<U> & IMeasurable> {
         return new Quantity<>(round(converted), unit);
     }
 
-    // =====================
-    // Subtract
-    // =====================
 
     public Quantity<U> subtract(Quantity<U> other) {
 
@@ -131,10 +115,6 @@ public class Quantity<U extends Enum<U> & IMeasurable> {
 
         return new Quantity<>(round(converted), unit);
     }
-
-    // =====================
-    // Divide
-    // =====================
 
     public double divide(Quantity<U> other) {
 
