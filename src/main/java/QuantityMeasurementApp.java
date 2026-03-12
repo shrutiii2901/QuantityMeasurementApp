@@ -20,9 +20,7 @@ public class QuantityMeasurementApp {
 
     public static void main(String[] args) {
 
-        // -----------------------------
-        // Length
-        // -----------------------------
+       
 
         Quantity<LengthUnit> length1 =
                 new Quantity<>(1.0, LengthUnit.FEET);
@@ -36,9 +34,7 @@ public class QuantityMeasurementApp {
 
         demonstrateAddition(length1, length2, LengthUnit.FEET);
 
-        // -----------------------------
-        // Weight
-        // -----------------------------
+    
 
         Quantity<WeightUnit> weight1 =
                 new Quantity<>(1.0, WeightUnit.KILOGRAM);

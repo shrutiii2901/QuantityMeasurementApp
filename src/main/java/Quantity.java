@@ -24,7 +24,7 @@ public class Quantity<U extends IMeasurable> {
     }
 
   
-    // Convert to another unit
+
     
     public Quantity<U> convertTo(U targetUnit) {
 
@@ -39,7 +39,7 @@ public class Quantity<U extends IMeasurable> {
         return new Quantity<>(round(converted), targetUnit);
     }
 
-    // Addition (default unit)
+    
  
     public Quantity<U> add(Quantity<U> other) {
 
@@ -47,7 +47,7 @@ public class Quantity<U extends IMeasurable> {
     }
 
     
-    // Addition (explicit unit)
+    
     
     public Quantity<U> add(Quantity<U> other, U targetUnit) {
 
@@ -66,7 +66,7 @@ public class Quantity<U extends IMeasurable> {
     }
 
    
-    // Equality
+   
    
     @Override
     public boolean equals(Object obj) {
