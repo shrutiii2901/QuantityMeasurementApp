@@ -1,21 +1,30 @@
+package model;
 
+import quantity.Quantity;
+import measurable.IMeasurable;
+import units.*;
 
+public class QuantityModel {
+    public static Quantity<?> toQuantity(QuantityDTO dto) {
 
-public class QuantityModel<U extends Enum<U> & IMeasurable> {
+        switch(dto.getUnit()){
+            case "FEET":
+            case "INCH":
+            case "YARDS":
+            case "CENTIMETER": return new Quantity<>(dto.getValue(), LengthUnit.valueOf(dto.getUnit()));
 
-    private double value;
-    private U unit;
+            case "KILOGRAM":
+            case "GRAM":
+            case "POUND": return new Quantity<>(dto.getValue(), WeightUnit.valueOf(dto.getUnit()));
 
-    public QuantityModel(double value, U unit) {
-        this.value = value;
-        this.unit = unit;
-    }
+            case "LITRE":
+            case "MILLILITRE":
+            case "GALLON": return new Quantity<>(dto.getValue(), VolumeUnit.valueOf(dto.getUnit()));
 
-    public double getValue() {
-        return value;
-    }
+            case "CELSIUS":
+            case "FAHRENHEIT": return new Quantity<>(dto.getValue(), TemperatureUnit.valueOf(dto.getUnit()));
 
-    public U getUnit() {
-        return unit;
+            default: throw new IllegalArgumentException("Invalid unit");
+        }
     }
 }

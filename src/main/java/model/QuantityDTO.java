@@ -1,7 +1,9 @@
+package model;
+
 public class QuantityDTO {
 
-    private double value;
-    private String unit;
+    private final double value;
+    private final String unit;
 
     public QuantityDTO(double value, String unit) {
         this.value = value;

@@ -1,18 +1,40 @@
 
+package controller;
 
+import model.QuantityMeasurementEntity;
+import quantity.Quantity;
+import service.IQuantityMeasurementService;
 
 public class QuantityMeasurementController {
 
-    private QuantityMeasurementServiceImpl service =
-            new QuantityMeasurementServiceImpl();
+    private final IQuantityMeasurementService service;
 
-    public void performAddition() {
+    public QuantityMeasurementController(IQuantityMeasurementService service) {
+        if(service == null) throw new IllegalArgumentException("Service cannot be null");
+        this.service = service;
+    }
 
-        QuantityDTO q1 = new QuantityDTO(10, "FEET");
-        QuantityDTO q2 = new QuantityDTO(5, "FEET");
+    public void displayResult(QuantityMeasurementEntity entity) {
+        if(entity.hasError()) {
+            System.out.println("ERROR: " + entity.getError());
 
-        QuantityDTO result = service.add(q1, q2);
+        } else {
+            System.out.println(entity.toString());
+        }
+    }
 
-        System.out.println("Addition Result: " + result.getValue());
+    public void demonstrateEquality(Quantity<?> q1, Quantity<?> q2) {
+        QuantityMeasurementEntity result = service.compare(q1, q2);
+        displayResult(result);
+    }
+
+    public void demonstrateConversion(Quantity<?> quantity, Object targetUnit) {
+        QuantityMeasurementEntity result = service.convert(quantity, targetUnit);
+        displayResult(result);
+    }
+
+    public void demonstrateAddition(Quantity<?> q1, Quantity<?> q2) {
+        QuantityMeasurementEntity result = service.add(q1, q2);
+        displayResult(result);
     }
 }
