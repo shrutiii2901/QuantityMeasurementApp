@@ -1,8 +1,8 @@
 package units;
-import java.util.function.Function;
-
 import measurable.IMeasurable;
 import support.SupportsArithmetic;
+
+import java.util.function.Function;
 
 public enum TemperatureUnit implements IMeasurable {
 

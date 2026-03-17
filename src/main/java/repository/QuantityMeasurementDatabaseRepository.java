@@ -11,11 +11,9 @@ public class QuantityMeasurementDatabaseRepository implements IQuantityMeasureme
 
     @Override
     public void save(QuantityMeasurementEntity entity) {
+        String sql = "INSERT INTO measurement(value, unit, operation, result) VALUES (?, ?, ?, ?)";
 
-        String sql = "INSERT INTO measurement(operation, operand1, operand2, result) VALUES (?, ?, ?, ?)";
-
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try(Connection conn = DatabaseConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, entity.getOperation());
             stmt.setString(2, entity.getOperand1());
@@ -24,13 +22,9 @@ public class QuantityMeasurementDatabaseRepository implements IQuantityMeasureme
 
             stmt.executeUpdate();
 
-            System.out.println("Measurement saved successfully");
-
-        }
-        catch (SQLException e) {
-
+        } 
+        catch(SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage());
-
         }
     }
 }

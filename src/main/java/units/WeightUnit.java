@@ -1,6 +1,5 @@
-package units;
 
-import measurable.IMeasurable;
+import main.java.measurable.IMeasurable;
 import support.SupportsArithmetic;
 
 public enum WeightUnit implements IMeasurable {

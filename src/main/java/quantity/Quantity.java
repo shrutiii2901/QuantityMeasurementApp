@@ -1,7 +1,6 @@
 package quantity;
-import java.util.Objects;
-
 import measurable.IMeasurable;
+import java.util.Objects;
 
 public class Quantity<U extends IMeasurable> {
     private final double value;

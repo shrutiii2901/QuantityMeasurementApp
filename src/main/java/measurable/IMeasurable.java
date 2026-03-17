@@ -1,4 +1,4 @@
-package measurable;
+package main.java.measurable;
 
 
 public interface IMeasurable {
