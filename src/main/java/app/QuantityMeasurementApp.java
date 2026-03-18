@@ -1,11 +1,10 @@
 package app;
 
 import controller.QuantityMeasurementController;
-import quantity.Quantity;
+import model.QuantityMeasurementEntity;
 import repository.IQuantityMeasurementRepository;
 import repository.QuantityMeasurementDatabaseRepository;
 import service.QuantityMeasurementServiceImpl;
-import units.LengthUnit;
 
 public class QuantityMeasurementApp {
 
@@ -15,10 +14,9 @@ public class QuantityMeasurementApp {
 
         QuantityMeasurementController controller = new QuantityMeasurementController(new QuantityMeasurementServiceImpl());
 
-        Quantity<LengthUnit> l1 = new Quantity<>(1, LengthUnit.FEET);
-        Quantity<LengthUnit> l2 = new Quantity<>(12, LengthUnit.INCH);
+        QuantityMeasurementEntity entity
+                = new QuantityMeasurementEntity("ADD", "5m", "10m", "15m");
 
-        controller.demonstrateEquality(l1, l2);
-        controller.demonstrateAddition(l1, l2);
+        new QuantityMeasurementDatabaseRepository().save(entity);
     }
 }

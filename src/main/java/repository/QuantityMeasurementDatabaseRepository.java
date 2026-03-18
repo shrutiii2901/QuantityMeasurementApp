@@ -11,7 +11,7 @@ public class QuantityMeasurementDatabaseRepository implements IQuantityMeasureme
 
     @Override
     public void save(QuantityMeasurementEntity entity) {
-        String sql = "INSERT INTO measurement(value, unit, operation, result) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO quantity_measurement(operation, operand1, operand2, result) VALUES (?, ?, ?, ?)";
 
         try(Connection conn = DatabaseConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
