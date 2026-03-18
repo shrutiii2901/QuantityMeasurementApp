@@ -1,6 +1,6 @@
-package units;
-import measurable.IMeasurable;
-import support.SupportsArithmetic;
+package com.app.quantitymeasurementapp.units;
+import com.app.quantitymeasurementapp.measurable.IMeasurable;
+import com.app.quantitymeasurementapp.support.SupportsArithmetic;
 
 import java.util.function.Function;
 

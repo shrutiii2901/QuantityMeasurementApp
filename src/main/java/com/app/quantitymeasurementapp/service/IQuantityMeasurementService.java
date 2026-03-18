@@ -1,7 +1,7 @@
-package service;
+package com.app.quantitymeasurementapp.service;
 
-import model.QuantityMeasurementEntity;
-import quantity.Quantity;
+import com.app.quantitymeasurementapp.model.QuantityMeasurementEntity;
+import com.app.quantitymeasurementapp.quantity.Quantity;
 
 public interface IQuantityMeasurementService {
 
@@ -14,4 +14,5 @@ public interface IQuantityMeasurementService {
     QuantityMeasurementEntity subtract(Quantity<?> q1, Quantity<?> q2);
 
     QuantityMeasurementEntity divide(Quantity<?> q1, Quantity<?> q2);
+
 }

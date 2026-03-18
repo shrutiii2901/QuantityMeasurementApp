@@ -1,5 +1,5 @@
-package quantity;
-import measurable.IMeasurable;
+package com.app.quantitymeasurementapp.quantity;
+import com.app.quantitymeasurementapp.measurable.IMeasurable;
 import java.util.Objects;
 
 public class Quantity<U extends IMeasurable> {
@@ -105,6 +105,10 @@ public class Quantity<U extends IMeasurable> {
     @Override
     public String toString(){
         return String.format("%.2f %s", value, unit.getUnitName());
+    }
+    
+    public U getUnit(){
+        return unit;
     }
 
 }

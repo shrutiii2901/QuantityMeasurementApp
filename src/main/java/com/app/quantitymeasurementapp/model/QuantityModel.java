@@ -1,8 +1,8 @@
-package model;
+package com.app.quantitymeasurementapp.model;
 
-import quantity.Quantity;
-import measurable.IMeasurable;
-import units.*;
+import com.app.quantitymeasurementapp.quantity.Quantity;
+import com.app.quantitymeasurementapp.measurable.IMeasurable;
+import com.app.quantitymeasurementapp.units.*;
 
 public class QuantityModel {
     public static Quantity<?> toQuantity(QuantityDTO dto) {
