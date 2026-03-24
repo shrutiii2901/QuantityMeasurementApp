@@ -2,18 +2,17 @@ package com.app.quantitymeasurementapp.repository;
 
 import com.app.quantitymeasurementapp.model.QuantityMeasurementEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface QuantityMeasurementRepository extends JpaRepository<QuantityMeasurementEntity, Long> {
+public interface QuantityMeasurementRepository
+        extends JpaRepository<QuantityMeasurementEntity, Long> {
 
     List<QuantityMeasurementEntity> findByOperation(String operation);
 
-    List<QuantityMeasurementEntity> findByOperand1(String operand1);
+    // List<QuantityMeasurementEntity> findByThisMeasurementType(String type);
 
-    List<QuantityMeasurementEntity> findByErrorIsNotNull();
+    List<QuantityMeasurementEntity> findByErrorTrue();
 
-    long countByOperation(String operation);
+    long countByOperationAndErrorFalse(String operation);
 }

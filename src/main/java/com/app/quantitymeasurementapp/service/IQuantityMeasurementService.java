@@ -1,13 +1,17 @@
 package com.app.quantitymeasurementapp.service;
 
 import com.app.quantitymeasurementapp.model.QuantityMeasurementEntity;
+
+
+import java.util.List;
+
 import com.app.quantitymeasurementapp.quantity.Quantity;
 
 public interface IQuantityMeasurementService {
 
     QuantityMeasurementEntity compare(Quantity<?> q1, Quantity<?> q2);
 
-    QuantityMeasurementEntity convert(Quantity<?> quantity, Object targetUnit);
+    QuantityMeasurementEntity convert(Quantity<?> q1, Quantity<?> q2);
 
     QuantityMeasurementEntity add(Quantity<?> q1, Quantity<?> q2);
 
@@ -15,4 +19,6 @@ public interface IQuantityMeasurementService {
 
     QuantityMeasurementEntity divide(Quantity<?> q1, Quantity<?> q2);
 
+   
+    List<QuantityMeasurementEntity> getHistoryByOperation(String operation);
 }
