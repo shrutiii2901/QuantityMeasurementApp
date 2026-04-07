@@ -1,26 +1,72 @@
 package com.app.quantitymeasurementapp.auth.controller;
 
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.OAuth2User;
+import com.app.quantitymeasurementapp.auth.dto.AuthResponse;
+import com.app.quantitymeasurementapp.auth.dto.LoginRequest;
+import com.app.quantitymeasurementapp.auth.dto.RegisterRequest;
+import com.app.quantitymeasurementapp.security.jwt.JwtService;
+import com.app.quantitymeasurementapp.user.entity.Role;
+import com.app.quantitymeasurementapp.user.entity.User;
+import com.app.quantitymeasurementapp.user.repository.UserRepository;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.*;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collections;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
+    private final UserRepository repository;
+    private final PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
 
-    // After Google login
-    @GetMapping("/success")
-    public String loginSuccess(@AuthenticationPrincipal OAuth2User user) {
-
-        String name = user.getAttribute("name");
-        String email = user.getAttribute("email");
-
-        return "Welcome " + name + " (" + email + ")";
+    public AuthController(UserRepository repository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JwtService jwtService) {
+        this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
+        this.authenticationManager = authenticationManager;
+        this.jwtService = jwtService;
     }
 
-    // Check current user
-    @GetMapping("/me")
-    public OAuth2User currentUser(@AuthenticationPrincipal OAuth2User user) {
-        return user;
+    @PostMapping("/register")
+    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
+        if (repository.existsByEmail(request.getEmail())) {
+            throw new IllegalArgumentException("Email already registered");
+        }
+
+        User user = new User(
+                request.getName(),
+                request.getEmail(),
+                passwordEncoder.encode(request.getPassword()),
+                Role.USER,
+                "LOCAL"
+        );
+
+        repository.save(user);
+
+        UserDetails userDetails = new org.springframework.security.core.userdetails.User(
+                user.getEmail(),
+                user.getPassword(),
+                Collections.emptyList()
+        );
+
+        String token = jwtService.generateToken(userDetails);
+
+        return ResponseEntity.ok(new AuthResponse(token, user.getEmail(), user.getName()));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+
+        User user = repository.findByEmail(request.getEmail()).orElseThrow(() -> new IllegalArgumentException("User not found"));
+
+        UserDetails userDetails = new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), Collections.emptyList());
+
+        String token = jwtService.generateToken(userDetails);
+
+        return ResponseEntity.ok(new AuthResponse(token, user.getEmail(), user.getName()));
     }
 }
